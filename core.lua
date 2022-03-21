@@ -33,10 +33,11 @@ cloak.unvanish = function (player)
     if cloak.old_attrs[pname] == nil then
         return {success=false, errmsg="Player '"..pname.."' isn't cloaked, try cloak.vanish('"..pname.."') first."}
     end
-    player.set_properties(cloak.old_attrs[pname].attr)
-    player.set_nametag_attributes(cloak.old_attrs[pname].name)
+    player:set_properties(cloak.old_attrs[pname].attr)
+    player:set_nametag_attributes(cloak.old_attrs[pname].name)
     cloak.old_attrs[pname] = nil
     cloak.log("Player '"..pname.."' is now uncloaked.")
+    return {success=true, errmsg=""}
 end
 
 -- Return them to uncloaked on them leaving
