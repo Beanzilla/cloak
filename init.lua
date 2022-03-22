@@ -4,6 +4,9 @@ cloak = {}
 cloak.version = "1.0.0"
 
 cloak.log = function (msg)
+    if type(msg) == "table" or type(msg) == "userdata" then
+        msg = minetest.serialize(msg)
+    end
     minetest.log("action", "[cloak] " .. tostring(msg))
 end
 
@@ -20,3 +23,4 @@ cloak.dofile("priv") -- The privs (cloak, cloak_admin)
 cloak.dofile("chat") -- The chat commands ("/cloak", "/cloak_list")
 
 cloak.log("Version: ".. cloak.version)
+
